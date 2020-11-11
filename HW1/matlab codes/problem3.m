@@ -1,4 +1,6 @@
-function result = problem3()
+% Cem Güleç - 150117828
+
+function PSNR = problem3()
     
     % step 1
     % importing original image and converting
@@ -50,15 +52,16 @@ function result = problem3()
     
     % step 6
     for i = 1:N1
-        for j= 1:N2
-            MSE = MSE + (upsampled_img(i,j) - original_img(i,j)).^2;
-        end
-    end
-           
-    
-    tmp_val = MAXl^2 / MSE;
-    
-    PSNR = 10 * log10(tmp_val);
-    
-    display(PSNR)
+         for j= 1:N2
+             MSE = MSE + (upsampled_img(i,j).*255 - original_img(i,j).*255).^2;
+         end
+     end
+     
+     MSE = MSE/(N1*N2);
+     
+     tmp_val = MAXl^2 / MSE;
+     
+     PSNR = 10 * log10(tmp_val);
+
+    fprintf('PSNR value= %.3f\n', PSNR);
 end

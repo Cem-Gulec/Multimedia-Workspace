@@ -1,4 +1,6 @@
-function result = problem1()
+% Cem Güleç - 150117828 
+
+function PSNR = problem1()
 
     % step 1 and step 2
     % importing original image and converting
@@ -26,17 +28,17 @@ function result = problem1()
     % step 5
     % computing MSE and then PSNR values
     
-    for i = 1:N1
-        for j= 1:N2
-            MSE = MSE + (original_img(i,j) - filtered_img(i,j)).^2;
-        end
-    end
+     for i = 1:N1
+         for j= 1:N2
+             MSE = MSE + (original_img(i,j).*255 - filtered_img(i,j).*255).^2;
+         end
+     end
            
-    
-    tmp_val = MAXl^2 / MSE;
-    
-    PSNR = 10 * log10(tmp_val);
-    
-    display(PSNR)
-    whos
+     MSE = MSE/(N1*N2);
+     
+     tmp_val = MAXl^2 / MSE;
+     
+     PSNR = 10 * log10(tmp_val);
+        
+    fprintf('PSNR value= %f\n', MSE);
 end
