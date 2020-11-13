@@ -8,7 +8,7 @@ function PSNR = problem1()
     % output : Lena.gif with type 'double' (256x256)
     base_img = imread('C:\Users\Cem\Documents\GitHub\Multimedia-Workspace\HW1\Lena.gif');
     original_img = im2double(base_img);
-    
+        
     
     % step 3: defining variables and filter
     MSE=0;

@@ -36,6 +36,7 @@ function PSNR = problem3()
     filtered_img(:, 2:2:end) = [];
     downsampled_img = filtered_img(:,:);
     
+    
     % step 4: Applying spatial domain processing
     % This step, up-samples this low resolution 
     % image to the original resolution
@@ -53,10 +54,12 @@ function PSNR = problem3()
         end
     end
     
+   
     % step 5: Convolution application to have the up-sampled image
     % input  : spatial domain applied image (359x479) 
     % output : up sampled image (359x479)
     upsampled_img = imfilter(zero_inserted_img, convolve_filter);
+    
     
     % step 6: computing MSE and then PSNR values
     % Here, every corresponding index is multiplied by 255

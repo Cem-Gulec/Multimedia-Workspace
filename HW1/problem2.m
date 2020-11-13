@@ -22,11 +22,12 @@ function PSNR = problem2()
                       1/25 1/25 1/25 1/25 1/25;...
                       1/25 1/25 1/25 1/25 1/25];
     
+                  
     % step 4: low-pass filtering the original image
     % input  : original image in 'double' type
     % output : filtered image (256x256)
     filtered_img = imfilter(original_img, lowpass_filter, 'replicate');
-    
+        
     
     % step 5: computing MSE and then PSNR values
     % Here, every corresponding index is multiplied by 255
