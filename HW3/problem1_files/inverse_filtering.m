@@ -5,7 +5,7 @@ close all
 clc
 
 % specify the threshold T
-T = 1e-1;
+T = 0.5;
 
 %% read in the original, sharp and noise-free image
 original = im2double(rgb2gray((imread('original_cameraman.jpg'))));
@@ -40,7 +40,7 @@ restored(restored > 1) = 1;
 %% analysis of result
 noisy_psnr = 10 * log10(1 / (norm(original - noisy, 'fro') ^ 2 / H / W));
 restored_psnr = 10 * log10(1 / (norm(original - restored, 'fro') ^ 2 / H / W));
-
+ISNR = 10 * log10 ( sum( abs(original(:) - noisy(:)).^2 )/ sum( abs(original(:) - restored(:)).^2 ) );
 
 %% visualization
 figure; imshow(original, 'border', 'tight');

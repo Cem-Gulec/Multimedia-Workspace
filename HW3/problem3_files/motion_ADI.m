@@ -21,7 +21,7 @@ start3 = 40;
 start4 = 110;
 
 %threshold T as in euations in the lecture slides regarding ADI
-T = ?
+T = 0
 
 %initialize the reference frame R
 A(start1:start2, start3:start4) = 1;
@@ -40,9 +40,9 @@ for i = 5: 5 :50
         % Equations can be found in lecture slides regarding ADIs
         % You need to decide on the appropriate threshold T for this case
         % at line 23
-        ADI_abs ?
-        ADI_pos ?
-        ADI_neg ?
+        ADI_abs = ADI_abs + (abs(A - A2) > T);
+        ADI_pos = ADI_pos + (A - A2 > T);
+        ADI_neg = ADI_pos + (A - A2 < -T);
 end
 
 % The following part will calculate the moving speed 
