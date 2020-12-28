@@ -21,4 +21,6 @@ image_cls_restored = cls_restoration(image_noisy, blur_impulse, alpha);
 figure; imshow(image_cls_restored, 'border', 'tight');
 
 %% computation of ISNR
-ISNR = 10 * log10 ( sum( abs(image_original(:) - image_noisy(:)).^2 )/ sum( abs(image_original(:) - image_cls_restored(:)).^2 ) );
+sumdif_org_noisy = sum(abs(image_original(:) - image_noisy(:)).^2);
+sumdif_org_restored = sum(abs(image_original(:) - image_cls_restored(:)).^2);
+ISNR = 10 * log10(sumdif_org_noisy / sumdif_org_restored);
